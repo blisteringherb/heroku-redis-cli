@@ -3,6 +3,7 @@ class Heroku::Command::Redis < Heroku::Command::Base
 
   def cli(*queries)
     # Must remember to extract these so they don't get passed to redis-cli
+    puts options
     db = options[:db] || 'REDISTOGO_URL'
     app = extract_app
 
