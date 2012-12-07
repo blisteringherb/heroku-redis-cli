@@ -7,7 +7,7 @@ class Heroku::Command::Redis < Heroku::Command::Base
     db = options[:db] || 'MYREDIS_URL'
     app = extract_app
 
-    redis_url = heroku.config_vars(app)[db]
+    redis_url =  api.get_config_vars(app).body[db]
     return puts "No such redis (#{db}), try setting --db REDIS_URL." unless redis_url
     uri = URI.parse(redis_url)
 
